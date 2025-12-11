@@ -1,5 +1,4 @@
 import input from "analiza-sync";
-import { filterStocksByPrice, searchStock } from "./stockExchange";
 
 export function printMenu() {
   console.log("====Menu====");
@@ -12,22 +11,4 @@ export function printMenu() {
 }
 
 const choice = input("Please enter a number of your choice;\nchoice:    ");
-if (choice === "1") {
-  const identifier = input(
-    "Please enter the ID or name of the stock you are looking for\nPlease enter:   "
-  );
-  searchStock(identifier);
-} else if (choice === "2") {
-  const givenPrice = parseInt(input("Please enter a stock price\nprice:   "));
-  let above;
-  const aboveOrbelow = input("Do you want above price Y/N:   ");
-  if (aboveOrbelow === "y" || aboveOrbelow === "Y") {
-    above = true;
-  } else if (aboveOrbelow === "n" || aboveOrbelow === "N") {
-    above = false;
-  }
-  filterStocksByPrice(givenPrice, above);
-} else if (choice === "3") {
-} else if (choice === "1") {
-}
-return choice;
+return choice
