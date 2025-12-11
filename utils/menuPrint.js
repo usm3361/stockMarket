@@ -7,8 +7,8 @@ export function printMenu() {
   console.log("3. Buy or sell a stock");
   console.log("4. exit");
 
+  const choice = input("Please enter a number of your choice;\nchoice:    ");
+  return choice
 
 }
 
-const choice = input("Please enter a number of your choice;\nchoice:    ");
-return choice

@@ -1,6 +1,5 @@
 import input from "analiza-sync";
-import { stockMarket } from "../data/data";
-import { updateStockCount } from "./updateFunc";
+import { stockMarket } from "../data/data.js";
 
 export function searchStock(identifier) {
   return stockMarket.stocks.filter(
@@ -14,7 +13,7 @@ export function filterStocksByPrice(givenPrice, above) {
     arreyStock = stockMarket.stocks.filter(
       (stock) => stock.currentPrice > givenPrice
     );
-  } else (above === false) {
+  } else {
     arreyStock = stockMarket.stocks.filter(
       (stock) => stock.currentPrice < givenPrice
     );
@@ -31,11 +30,13 @@ export function operateOnStock(operation, identifier) {
     if (operation === 'buy' && found.length > 0) {
         const amount = input('how many units to buy or sell:\n')
         found.availableStocks -= amount
-        found.currentPrice
-        
+        found.currentPrice *=1.05
+
     } else if (operation === 'sell' && found.length > 0) {
         const amount = input('how many units to sell or sell:\n')
         found.availableStocks += amount
+                found.currentPrice /=0.95
+
     }
     
 }
