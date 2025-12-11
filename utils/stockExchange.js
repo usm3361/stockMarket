@@ -8,36 +8,36 @@ export function searchStock(identifier) {
 }
 
 export function filterStocksByPrice(givenPrice, above) {
-  let arreyStock 
-    if (above === true) {
-    arreyStock = stockMarket.stocks.filter(
-      (stock) => stock.currentPrice > givenPrice
-    );
+  let arreyStock = [];
+  if (above === true) {
+    arreyStock =
+      stockMarket.stocks.filter((stock) => stock.currentPrice > givenPrice)
+    ;
   } else {
-    arreyStock = stockMarket.stocks.filter(
-      (stock) => stock.currentPrice < givenPrice
-    );
-}
-    if (arreyStock.length === 0) {
-        console.log('not found stocks')
-        return arreyStock
-    } arreyStock = []
-    return arreyStock
+    arreyStock =
+      stockMarket.stocks.filter((stock) => stock.currentPrice < givenPrice)
+    ;
+  }
+  if (arreyStock.length === 0) {
+    console.log("not found stocks");
+    return arreyStock;
+  }
+  return arreyStock;
 }
 
 export function operateOnStock(operation, identifier) {
-    const found = stockMarket.stocks.find(stock => stock.id === identifier || stock.name === identifier)
-    if (operation === 'buy' && found.length > 0) {
-        const amount = input('how many units to buy or sell:\n')
-        found.availableStocks -= amount
-        found.currentPrice *=1.05
-
-    } else if (operation === 'sell' && found.length > 0) {
-        const amount = input('how many units to sell or sell:\n')
-        found.availableStocks += amount
-                found.currentPrice /=0.95
-
+    const found = stockMarket.stocks.find(
+        (stock) => stock.id === identifier || stock.name === identifier
+    );
+    if (operation === "buy" && found.length > 0) {
+        const amount = input("how many units to buy:\n");
+        found.availableStocks -= amount;
+        found.currentPrice *= 1.05;
+        return
+    } else if (operation === "sell" && found.length > 0) {
+        const amount = input("how many units to sell:\n");
+        found.availableStocks += amount;
+        found.currentPrice /= 0.95;
+        return
     }
-    
 }
-
