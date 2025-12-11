@@ -28,8 +28,10 @@ export function startTrade() {
       } else if (aboveOrbelow === "n" || aboveOrbelow === "N") {
         above = false;
       }
-      const arreyPrice = filterStocksByPrice(givenPrice, above);
-      console.log("this is array of givenPrice:", arreyPrice);
+      const arreyStockByPrice = filterStocksByPrice(givenPrice, above);
+      if (arreyStockByPrice.length > 0) {
+        console.log("this is array of givenPrice:", arreyStockByPrice);
+      }
     } else if (choice === "3") {
       console.log("1. if want to buy");
       console.log("2. if want to sell");
@@ -39,7 +41,7 @@ export function startTrade() {
       const identifier = input(
         "Please enter an identifier on which you would like to perform the operation\nidentifier:    "
       );
-      if (operation === 1) {
+      if (operation === "1") {
         operateOnStock("buy", identifier);
         console.log("The stock purchase was successful");
       } else {
